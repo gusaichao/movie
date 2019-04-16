@@ -1,14 +1,260 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".mvp.ui.fragment.homefragment.myFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="3333333333333333333333333333" />
+        android:layout_height="wrap_content"
+        android:src="@mipmap/my_fragment_bg"
+        android:scaleType="centerCrop"
+        app:layout_constraintTop_toTopOf="parent"/>
 
-</FrameLayout>
+
+
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/my_fragment_bg"
+        android:scaleType="centerCrop"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/dp_220"
+        android:background="#fff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/con1"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_86"
+            android:layout_marginLeft="@dimen/dp_24"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_24"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@drawable/my_fragment_item_shape">
+
+            <ImageView
+                android:id="@+id/my_fragment_image1"
+                android:layout_width="@dimen/dp_24"
+                android:layout_height="@dimen/dp_24"
+                android:src="@mipmap/my_icon_messiage_default"
+                app:layout_constraintBottom_toTopOf="@id/my_fragment_text1"
+                app:layout_constraintLeft_toLeftOf="@id/my_fragment_text1"
+                app:layout_constraintRight_toRightOf="@id/my_fragment_text1"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/my_fragment_text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_30"
+                android:text="我的信息"
+                android:textColor="#333333"
+                android:textSize="@dimen/sp_12"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/my_fragment_image1" />
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/con2"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_86"
+            android:layout_marginLeft="@dimen/dp_24"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_24"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/con1"
+            android:background="@drawable/my_fragment_item_shape">
+
+            <ImageView
+                android:id="@+id/my_fragment_image2"
+                android:layout_width="@dimen/dp_24"
+                android:layout_height="@dimen/dp_24"
+                android:src="@mipmap/my_icon_attention_default"
+                app:layout_constraintBottom_toTopOf="@id/my_fragment_text2"
+                app:layout_constraintLeft_toLeftOf="@id/my_fragment_text2"
+                app:layout_constraintRight_toRightOf="@id/my_fragment_text2"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/my_fragment_text2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_30"
+                android:text="我的关注"
+                android:textColor="#333333"
+                android:textSize="@dimen/sp_12"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/my_fragment_image2" />
+
+            <ImageView
+                android:id="@+id/my_fragment_image3"
+                android:layout_width="@dimen/dp_24"
+                android:layout_height="@dimen/dp_24"
+                android:layout_marginLeft="@dimen/dp_54"
+                android:src="@mipmap/my_icon_rccord_default"
+                app:layout_constraintLeft_toRightOf="@id/my_fragment_text2"
+                app:layout_constraintRight_toRightOf="@id/my_fragment_text3"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/my_fragment_text3"
+                />
+
+            <TextView
+                android:id="@+id/my_fragment_text3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_54"
+                android:text="购票记录"
+                android:textColor="#333333"
+                android:textSize="@dimen/sp_12"
+                app:layout_constraintLeft_toRightOf="@id/my_fragment_text2"
+                app:layout_constraintTop_toBottomOf="@id/my_fragment_image3"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/con3"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_86"
+            android:layout_marginLeft="@dimen/dp_24"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_24"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/con2"
+            android:background="@drawable/my_fragment_item_shape">
+
+            <ImageView
+                android:id="@+id/my_fragment_image4"
+                android:layout_width="@dimen/dp_24"
+                android:layout_height="@dimen/dp_24"
+                android:src="@mipmap/my_icon_feedback_default"
+                app:layout_constraintBottom_toTopOf="@id/my_fragment_text4"
+                app:layout_constraintLeft_toLeftOf="@id/my_fragment_text4"
+                app:layout_constraintRight_toRightOf="@id/my_fragment_text4"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/my_fragment_text4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_30"
+                android:text="意见反馈"
+                android:textColor="#333333"
+                android:textSize="@dimen/sp_12"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/my_fragment_image4" />
+
+            <ImageView
+                android:id="@+id/my_fragment_image5"
+                android:layout_width="@dimen/dp_24"
+                android:layout_height="@dimen/dp_24"
+                android:layout_marginLeft="@dimen/dp_54"
+                android:src="@mipmap/my_icon_version_default"
+                app:layout_constraintLeft_toRightOf="@id/my_fragment_text4"
+                app:layout_constraintRight_toRightOf="@id/my_fragment_text5"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/my_fragment_text5"
+                />
+
+            <TextView
+                android:id="@+id/my_fragment_text5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_54"
+                android:text="最新版本"
+                android:textColor="#333333"
+                android:textSize="@dimen/sp_12"
+                app:layout_constraintLeft_toRightOf="@id/my_fragment_text4"
+                app:layout_constraintTop_toBottomOf="@id/my_fragment_image5"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <ImageView
+                android:id="@+id/my_fragment_image6"
+                android:layout_width="@dimen/dp_24"
+                android:layout_height="@dimen/dp_24"
+                android:layout_marginLeft="@dimen/dp_54"
+                android:src="@mipmap/my_icon_logout_default"
+                app:layout_constraintLeft_toRightOf="@id/my_fragment_text5"
+                app:layout_constraintRight_toRightOf="@id/my_fragment_text6"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/my_fragment_text6"
+                />
+
+            <TextView
+                android:id="@+id/my_fragment_text6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_54"
+                android:text="退出登录"
+                android:textColor="#333333"
+                android:textSize="@dimen/sp_12"
+                app:layout_constraintLeft_toRightOf="@id/my_fragment_text5"
+                app:layout_constraintTop_toBottomOf="@id/my_fragment_image6"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+        </android.support.constraint.ConstraintLayout>
+    </android.support.constraint.ConstraintLayout>
+    <ImageView
+        android:layout_width="@dimen/dp_24"
+        android:layout_height="@dimen/dp_24"
+        android:src="@mipmap/my_icon_remind_default"
+        android:scaleType="centerCrop"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/dp_30"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="@dimen/dp_24"/>
+
+    <ImageView
+        android:id="@+id/my_fargment_userimage"
+        android:layout_width="@dimen/dp_72"
+        android:layout_height="@dimen/dp_72"
+        android:src="@mipmap/userheaderimage"
+        android:scaleType="centerCrop"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/dp_60"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <TextView
+        android:id="@+id/my_fargment_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="冬天来了"
+        android:textColor="#fff"
+        android:textSize="@dimen/sp_14"
+        android:layout_marginTop="@dimen/dp_10"
+        app:layout_constraintTop_toBottomOf="@id/my_fargment_userimage"
+        app:layout_constraintLeft_toLeftOf="@id/my_fargment_userimage"
+        app:layout_constraintRight_toRightOf="@id/my_fargment_userimage"
+        />
+    <TextView
+        android:id="@+id/my_fargment_userqiandao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="签到"
+        android:textColor="#fff"
+        android:gravity="center"
+        android:background="@drawable/qiandao_shape_bg"
+        android:textSize="@dimen/sp_14"
+        android:layout_marginTop="@dimen/dp_12"
+        app:layout_constraintTop_toBottomOf="@id/my_fargment_username"
+        app:layout_constraintLeft_toLeftOf="@id/my_fargment_userimage"
+        app:layout_constraintRight_toRightOf="@id/my_fargment_userimage"
+        />
+</android.support.constraint.ConstraintLayout>

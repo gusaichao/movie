@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".mvp.ui.fragment.homefragment.yingyuanFragment">
+
+    <FrameLayout
+        android:id="@+id/main_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/dp_10"
+        app:layout_constraintTop_toBottomOf="@id/navigation_btn"
+        app:layout_constraintBottom_toBottomOf="parent">
+    </FrameLayout>
+
+    <RadioGroup
+        android:id="@+id/navigation_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_54"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="horizontal"
+        >
+
+    <RadioButton
+        android:id="@+id/btn1"
+        android:gravity="center"
+        android:button="@null"
+        android:checked="true"
+        android:text="推荐影院"
+        android:textSize="@dimen/sp_14"
+        android:textColor="#ffffff"
+        android:background="@drawable/yingyuan_fragment_btn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="3dp"
+        android:layout_weight="1"/>
+
+    <RadioButton
+        android:id="@+id/btn2"
+        android:gravity="center"
+        android:button="@null"
+        android:text="附近影院"
+        android:textSize="@dimen/sp_14"
+        android:background="@drawable/yingyuan_fragment_btn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="3dp"
+        android:layout_marginLeft="@dimen/dp_32"
+        android:layout_weight="1"/>
+    </RadioGroup>
+</android.support.constraint.ConstraintLayout>

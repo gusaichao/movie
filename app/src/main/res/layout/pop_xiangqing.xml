@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFF">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent"
+        >
+
+    <RelativeLayout
+        android:layout_marginLeft="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/img"
+            android:layout_width="111dp"
+            android:layout_height="149dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp" />
+        <TextView
+            android:textSize="15dp"
+            android:id="@+id/pop_detail_typetext"
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@id/img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:textSize="15dp"
+            android:layout_toRightOf="@id/img"
+            android:id="@+id/pop_detail_director"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/pop_detail_typetext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:textSize="15dp"
+            android:layout_toRightOf="@id/img"
+            android:layout_below="@id/pop_detail_director"
+            android:id="@+id/pop_detail_minute"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:textSize="15dp"
+            android:layout_below="@id/pop_detail_minute"
+            android:id="@+id/pop_detail_place"
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@id/img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/pop_detail_finish"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/com_icon_down_default"
+            android:layout_width="@dimen/dp_24"
+            android:layout_height="@dimen/dp_24" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/film_fenlei"
+        android:textSize="20dp"
+        android:text="剧情简介"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <View
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="5dp"
+        android:layout_below="@id/film_fenlei"
+        android:background="#750F41"
+        android:layout_width="50dp"
+        android:layout_height="3dp"/>
+    <TextView
+        android:id="@+id/title"
+        android:layout_marginLeft="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:textSize="20dp"
+        android:text="演职人员"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <View
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="5dp"
+        android:layout_below="@id/film_fenlei"
+        android:background="#750F41"
+        android:layout_width="50dp"
+        android:layout_height="3dp"/>
+    <RelativeLayout
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/pop_leftbutton"
+            android:background="#F79D3E"
+            android:padding="10dp"
+            android:text="演员名字"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:layout_alignParentRight="true"
+            android:background="#F79D3E"
+            android:padding="10dp"
+            android:text="饰演角色"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/revs"
+            android:layout_below="@id/pop_leftbutton"
+            android:layout_width="312dp"
+            android:layout_marginTop="12dp"
+            android:layout_height="wrap_content">
+        </android.support.v7.widget.RecyclerView>
+    </RelativeLayout>
+
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,97 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        config {
+            keyAlias 'bw_movie'
+            keyPassword '123456'
+            storeFile file('D:/movie.keystore')
+            storePassword '123456'
+        }
+        release {
+            keyAlias 'bw_movie'
+            keyPassword '123456'
+            storeFile file('D:/movie.keystore')
+            storePassword '123456'
+        }
+    }
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.bw.movie"
+        minSdkVersion 15
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        signingConfig signingConfigs.release
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            signingConfig signingConfigs.release
+        }
+    }
+    productFlavors {
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    implementation 'com.android.support:support-v4:28.0.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    //Rxjava2需要依赖
+    implementation 'io.reactivex.rxjava2:rxjava:+'
+    implementation 'io.reactivex.rxjava2:rxandroid:+'
+    //让retrofit支持Rxjava2
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:+'
+    //配置retrofit2.0
+    implementation 'com.squareup.retrofit2:retrofit:+'
+    implementation 'com.squareup.retrofit2:converter-gson:+'
+    //EventBus依赖库:
+    implementation 'org.greenrobot:eventbus:3.1.1'
+    //fresco依赖
+    implementation 'com.facebook.fresco:fresco:1.9.0'
+    //列表的展示
+    api 'com.android.support:recyclerview-v7:28.0.0'
+    implementation 'com.github.xiaohaibin:XBanner:1.6.1'
+    //图片加载框架，glide
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
+    //
+    implementation 'com.hjm:BottomTabBar:1.1.1'
+    //流式布局
+    api 'com.hyman:flowlayout-lib:1.1.2'
+    //xrecyclerview
+    implementation 'com.jcodecraeer:xrecyclerview:1.5.9'
+    implementation 'com.jaeger.statusbarutil:library:1.4.0'
+    api 'com.github.mcxtzhang:SwipeDelMenuLayout:V1.3.0'
+    implementation 'com.android.support:cardview-v7:28.0.0'
+    //takephoto
+    implementation 'com.github.crazycodeboy:TakePhoto:v4.1.0'
+    implementation 'com.github.apl-devs:appintro:v4.2.2'
+    //okhttp
+    api 'com.squareup.okhttp3:okhttp:3.12.1'
+    api 'com.squareup.okhttp3:logging-interceptor:3.12.1'
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.chenlittleping:recyclercoverflow:1.0.6'
+    //微信登陆
+    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
+}
+configurations.all {
+    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+        def requested = details.requested
+        if (requested.group == 'com.android.support') {
+            if (!requested.name.startsWith("multidex")) {
+                details.useVersion '27.1.1'    //此处填写你项目使用的sdk版本
+            }
+        }
+    }
+}

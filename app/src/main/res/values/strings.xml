@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">movie</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="app_xiangqin">详情</string>
+    <string name="app_yugao">预告</string>
+    <string name="app_juzao">剧照</string>
+    <string name="app_yingping">影评</string>
+    <string name="app_dianyngxiangqin">电影详情</string>
+    <string name="phone">手机号</string>
+    <string name="app_chandi">产地:</string>
+    <string name="app_shichang">时长:</string>
+    <string name="app_daoyan">导演:</string>
+    <string name="app_leixing">类型:</string>
+    <string name="app_yuanname">请选择合适的影院</string>
+    <string name="app_ping_fabiao">发表</string>
+
+</resources>

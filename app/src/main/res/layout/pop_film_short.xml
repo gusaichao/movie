@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFF"
+    >
+    <RelativeLayout
+        android:layout_marginLeft="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="28dp"
+            android:text="预告"
+            android:textColor="#333333"
+            android:textSize="16sp"
+            android:id="@+id/tui"
+            />
+        <View
+            android:layout_width="50dp"
+            android:layout_height="3dp"
+            android:layout_below="@+id/tui"
+            android:layout_alignStart="@+id/tui"
+            android:background="#440a33" />
+
+        <ImageView
+            android:id="@+id/pop_detail_three"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_alignParentRight="true"
+            android:background="@mipmap/com_icon_down_default" />
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:id="@+id/frag_recommend_2"
+        />
+
+
+</LinearLayout>

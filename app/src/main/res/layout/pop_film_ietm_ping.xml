@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="@dimen/dp_5"
+    android:layout_marginTop="@dimen/dp_10"
+    android:background="@drawable/my_fragment_item_shape"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/review_sdv_image"
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="@dimen/dp_40"
+            app:roundAsCircle="true"
+            />
+        <TextView
+            android:id="@+id/review_txt_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/dp_10"
+            android:text="13935979723"
+            android:textSize="@dimen/sp_14"
+            android:layout_marginLeft="@dimen/dp_10"
+            />
+    </LinearLayout>
+        <TextView
+            android:id="@+id/review_txt_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="4"
+            android:textSize="@dimen/sp_12"
+            android:layout_marginTop="@dimen/dp_10"
+            android:text="等哈看好安徽大会回来查回答客大大的啊户客户卡号地块大家看好安好了"
+            />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_10"
+            >
+            <TextView
+                android:id="@+id/review_txt_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" android:text="2019-04-15"
+                android:textSize="@dimen/sp_12"
+                android:textColor="#999999"
+                />
+               <LinearLayout
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:orientation="horizontal"
+                   android:layout_alignParentEnd="true" android:layout_alignParentRight="true"
+                   >
+                   <ImageView
+                       android:layout_width="@dimen/dp_16"
+                       android:layout_height="@dimen/dp_16"
+                       android:contentDescription="TODO" android:src="@mipmap/com_icon_praise_default"
+                       android:layout_marginEnd="@dimen/dp_6" android:layout_marginRight="@dimen/dp_6"
+
+                       />
+                   <TextView
+                       android:id="@+id/pop_film_item_zan"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:text="1622"
+                       android:textSize="@dimen/sp_12"
+                       android:layout_marginEnd="@dimen/dp_18" android:layout_marginRight="@dimen/dp_18"
+                       android:textColor="#666666"
+                       />
+                   <ImageView
+                       android:layout_width="@dimen/dp_16"
+                       android:layout_height="@dimen/dp_16"
+                       android:contentDescription="TODO" android:src="@mipmap/com_icon_comment_default"
+                       android:layout_marginEnd="@dimen/dp_6" android:layout_marginRight="@dimen/dp_6"
+                       />
+                   <TextView
+                       android:id="@+id/pop_film_item_ping"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:text="999"
+                       android:textSize="@dimen/sp_12"
+                       android:textColor="#666666"
+                       />
+               </LinearLayout>
+        </RelativeLayout>
+</LinearLayout>

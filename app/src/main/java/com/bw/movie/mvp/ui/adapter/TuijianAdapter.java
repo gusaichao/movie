@@ -67,7 +67,6 @@ public class TuijianAdapter extends RecyclerView.Adapter<TuijianAdapter.Myvh> {
                 }
             }
         });
-
     }
 
     @Override

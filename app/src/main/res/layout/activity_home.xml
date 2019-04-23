@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".mvp.ui.activity.HomeActivity">
 
-    <android.support.v4.view.ViewPager
+    <com.bw.movie.mvp.ui.view.CustomViewPager
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/home_viewpager"

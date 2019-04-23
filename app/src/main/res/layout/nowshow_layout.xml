@@ -26,7 +26,6 @@
         android:layout_width="@dimen/dp_24"
         android:layout_height="@dimen/dp_24"
         android:src="@mipmap/com_icon_next_default"
-        android:scaleType="centerCrop"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginRight="@dimen/dp_24"
         app:layout_constraintTop_toTopOf="@id/remendianying"

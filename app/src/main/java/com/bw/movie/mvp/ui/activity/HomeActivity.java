@@ -12,6 +12,7 @@ import com.bw.movie.R;
 import com.bw.movie.mvp.ui.fragment.homefragment.myFragment;
 import com.bw.movie.mvp.ui.fragment.homefragment.yingpianFragment;
 import com.bw.movie.mvp.ui.fragment.homefragment.yingyuanFragment;
+import com.bw.movie.mvp.ui.view.CustomViewPager;
 import com.jaeger.library.StatusBarUtil;
 
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ import butterknife.ButterKnife;
 
 public class HomeActivity extends AppCompatActivity {
     private StatusBarUtil statusBarUtil;
-    private ViewPager mHomeViewpager;
+    private CustomViewPager mHomeViewpager;
     private RadioGroup mNavigationBtn;
     private RadioButton mBtn2;
     private RadioButton mBtn3;
@@ -80,5 +81,6 @@ public class HomeActivity extends AppCompatActivity {
         list_fragment.add(new yingpianFragment());
         list_fragment.add(new yingyuanFragment());
         list_fragment.add(new myFragment());
+        mHomeViewpager.setScanScroll(false);
     }
 }

@@ -1,10 +1,17 @@
 package com.bw.movie.utils;
 
 
+import com.bw.movie.bean.BaseBean;
+import com.bw.movie.bean.CinemaPageListBean;
+import com.bw.movie.bean.CinemasListByMovieIdBean;
 import com.bw.movie.bean.ComingBean;
+import com.bw.movie.bean.FujinBean;
 import com.bw.movie.bean.HotmovieBean;
 import com.bw.movie.bean.LoginBean;
+import com.bw.movie.bean.MoviePageListBean;
+import com.bw.movie.bean.MovieScheduleListBean;
 import com.bw.movie.bean.NowshowBean;
+import com.bw.movie.bean.PingBean;
 import com.bw.movie.bean.RegisterBean;
 import com.bw.movie.bean.TuijianBean;
 import com.bw.movie.bean.XiangBean;
@@ -12,16 +19,11 @@ import com.bw.movie.bean.XiangBean;
 import java.util.HashMap;
 
 import io.reactivex.Observable;
-import okhttp3.MultipartBody;
-import retrofit2.http.Body;
-import retrofit2.http.Field;
+import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
-import retrofit2.http.Header;
-import retrofit2.http.Multipart;
+import retrofit2.http.HeaderMap;
 import retrofit2.http.POST;
-import retrofit2.http.PUT;
-import retrofit2.http.Part;
 import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 
@@ -42,53 +44,51 @@ public interface WeiduService {
     @GET("movie/v1/findComingSoonMovieList")
     Observable<ComingBean> comingData(@Query("page") String page, @Query("count") String count);
 
-//    //关键字查询
-//    @GET("commodity/v1/findCommodityByKeyword")
-//    Observable<GoodsmsgBean> goodsmsgData(@Query("page") String page, @Query("count") String count, @Query("keyword") String keyword);
-//
-//    @GET("commodity/v1/findFirstCategory")
-//    Observable<PoptopBean> poptopData();
-//  关注影院
+    //电影关注
+    @GET("movie/v1/verify/followMovie")
+    Observable<BaseBean> followMovieData(@Query("movieId") String firstCategoryId);
+    //取消电影关注
+    @GET("movie/v1/verify/cancelFollowMovie")
+    Observable<BaseBean> cancelFollowMovieData(@Query("movieId") String firstCategoryId);
+
+
+    //定位查询附近影院
+    @GET("cinema/v1/findNearbyCinemas")
+    Observable<FujinBean> fujinData(@Query("page") String page, @Query("count") String count, @Query("longitude") String longitude,@Query("latitude") String latitude);
+
+    //  关注影院
     @GET("cinema/v1/verify/followCinema")
-    Observable<TuijianBean> guanzhuData(@Query("firstCategoryId") String firstCategoryId);
-    //取消关注
+    Observable<BaseBean> guanzhuData(@HeaderMap HashMap<String,String> map,@Query("cinemaId") String firstCategoryId);
+    //取消影院关注
     @GET("cinema/v1/verify/cancelFollowCinema")
-    Observable<TuijianBean> cancelFollowData(@Query("firstCategoryId") String firstCategoryId);
-//    //圈子
+    Observable<BaseBean> cancelFollowData(@HeaderMap HashMap<String,String> map,@Query("cinemaId") String firstCategoryId);
+   //推荐影院关注
     @GET("cinema/v1/findRecommendCinemas")
-    Observable<TuijianBean> circleData(@Query("page") String page, @Query("count") String count);
-//    //详情
+    Observable<TuijianBean> circleData(@HeaderMap HashMap<String,String> map,@Query("page") String page, @Query("count") String count);
+    //电影详情
     @GET("movie/v1/findMoviesDetail")
     Observable<XiangBean> xiangData(@Query("movieId") String movieId);
-//    //评价
-//    @GET("commodity/v1/CommodityCommentList")
-//    Observable<AssessBean> assessData(@Query("page") String page, @Query("count") String count, @Query("commodityId") String commodityId);
-//    //我的足迹
-//    @GET("commodity/verify/v1/browseList")
-//    Observable<MyfootBean> myfootData(@Header("userId") String userId, @Header("sessionId") String sessionId, @Query("page") String page, @Query("count") String count);
-//
-//    //加入购物车
-//    @FormUrlEncoded
-//    @PUT("order/verify/v1/syncShoppingCart")
-//    Observable<BannerBean> addcart(@Header("userId") String userId, @Header("sessionId") String sessionId, @Field("data") String data);
-//
-//    //查询购物车
-//    @GET("order/verify/v1/findShoppingCart")
-//    Observable<CartBean> cartData(@Header("userId") String userId, @Header("sessionId") String sessionId);
-//
-//    //上传头像
-//    @POST("user/verify/v1/modifyHeadPic")
-//    @Multipart
-//    Observable<ModifyHeadPic> headpic(@Header("userId") String userId, @Header("sessionId") String sessionId, @Part MultipartBody.Part f);
-//
-//    //个人资料
-//    @GET("user/verify/v1/getUserById")
-//    Observable<UserBean> userData(@Header("userId") String userId, @Header("sessionId") String sessionId);
-//    //收货地址列表
-//    @GET("user/verify/v1/receiveAddressList")
-//    Observable<AddressListBean> addressListData(@Header("userId") String userId, @Header("sessionId") String sessionId);
-//
-//    @POST("order/verify/v1/createOrder")
-//    Observable<BannerBean> creatorder(@Header("userId") String userId, @Header("sessionId") String sessionId, @Body MultipartBody body);
+    //评价
+    @GET("movie/v1/findAllMovieComment")
+    Observable<PingBean> pingData(@Query("page") String page, @Query("count") String count, @Query("movieId") String commodityId);
+
+    //购票根据电影ID查询当前排片该电影的影院列表
+    @GET("movie/v1/findCinemasListByMovieId")
+    Observable<CinemasListByMovieIdBean> CinemasListByMovieIdData(@Query("movieId") String movieId);
+    //根据电影ID和影院ID查询电影排期列表
+    @GET("movie/v1/findMovieScheduleList")
+    Observable<MovieScheduleListBean> MovieScheduleListData(@Query("movieId") String movieId,@Query("cinemasId") String cinemasId);
+
+    //添加评价
+    @FormUrlEncoded
+    @POST("movie/v1/verify/movieComment")
+    Observable<BaseBean> addpingData(@FieldMap HashMap<String,String> map);
+
+    //查询用户关注的影院信息
+    @GET("cinema/v1/verify/findCinemaPageList")
+    Observable<CinemaPageListBean> CinemaPageListData(@Query("page") String page, @Query("count") String count);
+    //查询用户关注的电影信息
+    @GET("movie/v1/verify/findMoviePageList")
+    Observable<MoviePageListBean> MoviePageListData(@Query("page") String page, @Query("count") String count);
 
 }

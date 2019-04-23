@@ -13,10 +13,14 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.bw.movie.R;
+import com.bw.movie.bean.BaseBean;
 import com.bw.movie.bean.TuijianBean;
 import com.bw.movie.mvp.contart.TuijianContart;
 import com.bw.movie.mvp.presneter.TuijianPresenter;
 import com.bw.movie.mvp.ui.adapter.TuijianAdapter;
+import com.bw.movie.utils.SPFUtil;
+
+import java.util.HashMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -30,6 +34,9 @@ public class TuijianFragment extends Fragment implements TuijianContart.ICircleV
     Unbinder unbinder;
     private TuijianAdapter tuijianAdapter;
     private TuijianPresenter tuijianPresenter;
+    private String userid;
+    private String sessionid;
+    private HashMap<String, String> map;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -45,8 +52,13 @@ public class TuijianFragment extends Fragment implements TuijianContart.ICircleV
         tuijianRecy.setLayoutManager(new LinearLayoutManager(getActivity()));
         tuijianAdapter = new TuijianAdapter(getActivity());
         tuijianAdapter.setOnclicklisnter(this);
+        userid = (String) SPFUtil.getInstance().getData("userid","");
+        sessionid = (String) SPFUtil.getInstance().getData("sessionid","");
+        map = new HashMap<>();
+        map.put("userId",userid);
+        map.put("sessionId",sessionid);
         tuijianPresenter = new TuijianPresenter(this);
-        tuijianPresenter.getKeyorNum(1+"",10+"");
+        tuijianPresenter.getKeyorNum(map,1+"",10+"");
     }
 
     @Override
@@ -67,7 +79,7 @@ public class TuijianFragment extends Fragment implements TuijianContart.ICircleV
     }
 
     @Override
-    public void guanzhusuccess(TuijianBean result) {
+    public void guanzhusuccess(BaseBean result) {
 //        关注成功返回0000
         if (result.getStatus().equals("0000")){
             Toast.makeText(getActivity(), ""+result.getMessage(), Toast.LENGTH_SHORT).show();
@@ -85,7 +97,7 @@ public class TuijianFragment extends Fragment implements TuijianContart.ICircleV
     }
 
     @Override
-    public void quxiaosuccess(TuijianBean result) {
+    public void quxiaosuccess(BaseBean result) {
 //        取消关注成功返回0000
         if (result.getStatus().equals("0000")){
             Toast.makeText(getActivity(), ""+result.getMessage(), Toast.LENGTH_SHORT).show();
@@ -104,9 +116,11 @@ public class TuijianFragment extends Fragment implements TuijianContart.ICircleV
     @Override
     public void click(String cid,int bb) {
         if (bb==1) {
-            tuijianPresenter.getcidKeyorNum(cid);
+            //请求关注接口
+            tuijianPresenter.getcidKeyorNum(map,cid);
         }else {
-            tuijianPresenter.getquxiaocidKeyorNum(cid);
+            //请求取消关注接口
+            tuijianPresenter.getquxiaocidKeyorNum(map,cid);
         }
     }
 }

@@ -2,10 +2,13 @@ package com.bw.movie.mvp.model;
 
 
 
+import com.bw.movie.bean.BaseBean;
 import com.bw.movie.bean.TuijianBean;
 import com.bw.movie.mvp.contart.TuijianContart;
 import com.bw.movie.mvp.presneter.TuijianPresenter;
 import com.bw.movie.utils.RetrofitUtils;
+
+import java.util.HashMap;
 
 import io.reactivex.Observable;
 
@@ -18,20 +21,20 @@ public class TuijianModel implements TuijianContart.ICirclemodel {
     }
 
     @Override
-    public void getCircleModel(String page, String count) {
-        Observable<TuijianBean> CircleData = RetrofitUtils.getInstance().getservice().circleData(page, count);
+    public void getCircleModel(HashMap<String, String> map,String page, String count) {
+        Observable<TuijianBean> CircleData = RetrofitUtils.getInstance().getservice().circleData(map,page, count);
         circlePresenter.getCirclePresenter(CircleData);
     }
 
     @Override
-    public void getguanzhuModel(String cinemaId) {
-        Observable<TuijianBean> CircleData = RetrofitUtils.getInstance().getservice().guanzhuData(cinemaId);
+    public void getguanzhuModel(HashMap<String,String> map, String cinemaId) {
+        Observable<BaseBean> CircleData = RetrofitUtils.getInstance().getservice().guanzhuData(map,cinemaId);
         circlePresenter.getguanzhuPresenter(CircleData);
     }
 
     @Override
-    public void getquxiaoModel(String cinemaId) {
-        Observable<TuijianBean> CircleData = RetrofitUtils.getInstance().getservice().cancelFollowData(cinemaId);
+    public void getquxiaoModel(HashMap<String,String> map,String cinemaId) {
+        Observable<BaseBean> CircleData = RetrofitUtils.getInstance().getservice().cancelFollowData(map,cinemaId);
         circlePresenter.getquxiaoPresenter(CircleData);
     }
 }

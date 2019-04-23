@@ -24,7 +24,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.baidu.location.BDLocation;
+import com.baidu.location.BDLocationListener;
+import com.baidu.location.LocationClient;
+import com.baidu.location.LocationClientOption;
+import com.baidu.mapapi.map.MapView;
 import com.bw.movie.R;
 import com.bw.movie.bean.AllBean;
 import com.bw.movie.bean.ComingBean;
@@ -33,6 +39,7 @@ import com.bw.movie.bean.NowshowBean;
 import com.bw.movie.mvp.contart.HotmovieContart;
 import com.bw.movie.mvp.presneter.HotmoviePresenter;
 import com.bw.movie.mvp.ui.adapter.CinemaFlowAdapter;
+import com.bw.movie.utils.SPFUtil;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -51,6 +58,14 @@ public class yingpianFragment extends Fragment implements HotmovieContart.IHotmo
     private RelativeLayout search_linear;
     private AutoTransition transition;
 
+    private MapView mMapView = null;
+    public LocationClient mLocationClient = null;
+    private MyLocationListener myListener = new MyLocationListener();
+    private TextView home_text;
+    private ImageView home_dingwei;
+    private double latitude;
+    private double longitude;
+    private String locationDescribe;
 
 
     @Override
@@ -73,9 +88,23 @@ public class yingpianFragment extends Fragment implements HotmovieContart.IHotmo
         search_linear = view.findViewById(R.id.search_linear);
         search_image = view.findViewById(R.id.search_image);
         search_edname = view.findViewById(R.id.search_edname);
+        home_text = view.findViewById(R.id.home_text);
+        home_dingwei = view.findViewById(R.id.home_dingwei);
         mRecy.setLayoutManager(new LinearLayoutManager(getActivity()));
         cinemaFlowAdapter = new CinemaFlowAdapter(getActivity());
         initView();
+
+        home_dingwei.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                home_text.setText(locationDescribe);
+                Toast.makeText(getActivity(), "纬度"+latitude+"经度"+longitude, Toast.LENGTH_SHORT).show();
+                SPFUtil.getInstance().saveData("latitude",latitude+"");
+                SPFUtil.getInstance().saveData("longitude",longitude+"");
+            }
+        });
+
+
     }
 
     private void initView() {
@@ -86,7 +115,54 @@ public class yingpianFragment extends Fragment implements HotmovieContart.IHotmo
         hotmoviePresenter.getKeyorNum3(1 + "", 10 + "");
         search_image.setOnClickListener(this);
         search_textName.setOnClickListener(this);
+
+
+
+        mLocationClient = new LocationClient(getActivity().getApplicationContext());
+        //声明LocationClient类
+        mLocationClient.registerLocationListener(myListener);
+        //注册监听函数
+        LocationClientOption option = new LocationClientOption();
+        option.setLocationMode(LocationClientOption.LocationMode.Battery_Saving);
+        //可选，是否需要位置描述信息，默认为不需要，即参数为false
+        //如果开发者需要获得当前点的位置信息，此处必须为true
+        option.setIsNeedLocationDescribe(true);
+        //可选，设置是否需要地址信息，默认不需要
+        option.setIsNeedAddress(true);
+        //可选，默认false,设置是否使用gps
+        option.setOpenGps(true);
+        //可选，默认false，设置是否当GPS有效时按照1S/1次频率输出GPS结果
+        option.setLocationNotify(true);
+        mLocationClient.setLocOption(option);
+        mLocationClient.start();
+
+
+
     }
+
+    public class MyLocationListener implements BDLocationListener {
+
+        private String addr;
+
+        @Override
+        public void onReceiveLocation(BDLocation location) {
+            //此处的BDLocation为定位结果信息类，通过它的各种get方法可获取定位相关的全部结果
+            //以下只列举部分获取地址相关的结果信息
+            //更多结果信息获取说明，请参照类参考中BDLocation类中的说明
+            //获取位置描述信息
+            locationDescribe = location.getLocationDescribe();
+            //纬度
+            latitude = location.getLatitude();
+            //经度
+            longitude = location.getLongitude();
+            //获取详细地址信息
+            addr = location.getAddrStr();
+            if (addr ==null){
+                return;
+            }
+        }
+    }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {

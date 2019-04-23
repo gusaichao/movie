@@ -211,6 +211,7 @@
         </android.support.constraint.ConstraintLayout>
     </android.support.constraint.ConstraintLayout>
     <ImageView
+        android:id="@+id/my_fragment_remind"
         android:layout_width="@dimen/dp_24"
         android:layout_height="@dimen/dp_24"
         android:src="@mipmap/my_icon_remind_default"

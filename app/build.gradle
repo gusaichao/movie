@@ -18,7 +18,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.bw.movie"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -36,7 +36,16 @@ android {
     }
     productFlavors {
     }
+    sourceSets {
+        main {
+            jni.srcDirs = []
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+
 }
+
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
@@ -84,6 +93,9 @@ dependencies {
     implementation 'com.chenlittleping:recyclercoverflow:1.0.6'
     //微信登陆
     implementation 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
+
+
+    implementation 'cn.jzvd:jiaozivideoplayer:6.2.4'
 }
 configurations.all {
     resolutionStrategy.eachDependency { DependencyResolveDetails details ->

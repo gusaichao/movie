@@ -225,7 +225,7 @@
             android:src="@mipmap/xuanzuo_queding" />
 
         <ImageView
-            android:id="@+id/back"
+            android:id="@+id/quxiao"
             android:layout_width="@dimen/dp_38"
             android:layout_height="@dimen/dp_38"
             android:layout_gravity="center"

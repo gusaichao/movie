@@ -2,6 +2,8 @@ package com.bw.movie.utils;
 
 
 import com.bw.movie.bean.BaseBean;
+import com.bw.movie.bean.BuyTicketRecordListBean;
+import com.bw.movie.bean.CinemaInfoBean;
 import com.bw.movie.bean.CinemaPageListBean;
 import com.bw.movie.bean.CinemasListByMovieIdBean;
 import com.bw.movie.bean.ComingBean;
@@ -10,7 +12,9 @@ import com.bw.movie.bean.HotmovieBean;
 import com.bw.movie.bean.LoginBean;
 import com.bw.movie.bean.MoviePageListBean;
 import com.bw.movie.bean.MovieScheduleListBean;
+import com.bw.movie.bean.MovieTicket;
 import com.bw.movie.bean.NowshowBean;
+import com.bw.movie.bean.PayBean;
 import com.bw.movie.bean.PingBean;
 import com.bw.movie.bean.RegisterBean;
 import com.bw.movie.bean.TuijianBean;
@@ -90,5 +94,22 @@ public interface WeiduService {
     //查询用户关注的电影信息
     @GET("movie/v1/verify/findMoviePageList")
     Observable<MoviePageListBean> MoviePageListData(@Query("page") String page, @Query("count") String count);
+    //购票下单
+    @FormUrlEncoded
+    @POST("movie/v1/verify/buyMovieTicket")
+    Observable<MovieTicket> MovieTicketData(@FieldMap HashMap<String,String> map);
+    //查询用户购票记录
+    @GET("user/v1/verify/findUserBuyTicketRecordList")
+    Observable<BuyTicketRecordListBean> BuyTicketRecordListData(@QueryMap HashMap<String,String> map);
+    //支付
+    @FormUrlEncoded
+    @POST("movie/v1/verify/pay")
+    Observable<PayBean> payData(@FieldMap HashMap<String,String> map);
+
+    //查询电影信息明细
+    @GET("cinema/v1/findCinemaInfo")
+    Observable<CinemaInfoBean> cinemainfoData(@Query("cinemaId")String cinemaId);
+
+
 
 }

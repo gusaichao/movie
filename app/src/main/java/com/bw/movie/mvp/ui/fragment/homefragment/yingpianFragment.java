@@ -32,6 +32,7 @@ import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.baidu.mapapi.map.MapView;
 import com.bw.movie.R;
+import com.bw.movie.base.BaseLazyLoadFragment;
 import com.bw.movie.bean.AllBean;
 import com.bw.movie.bean.ComingBean;
 import com.bw.movie.bean.HotmovieBean;
@@ -44,7 +45,7 @@ import com.bw.movie.utils.SPFUtil;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public class yingpianFragment extends Fragment implements HotmovieContart.IHotmovieView,
+public class yingpianFragment extends BaseLazyLoadFragment implements HotmovieContart.IHotmovieView,
         View.OnClickListener {
 
     Unbinder unbinder;
@@ -67,47 +68,13 @@ public class yingpianFragment extends Fragment implements HotmovieContart.IHotmo
     private double longitude;
     private String locationDescribe;
 
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_yingpian, container, false);
-        unbinder = ButterKnife.bind(this, view);
-        return view;
-
-
+    protected boolean setIsRealTimeRefresh() {
+        return false;
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        mDianyingbg = view.findViewById(R.id.dianyingbg);
-        mRecy = view.findViewById(R.id.recy);
-        search_textName = view.findViewById(R.id.search_textName);
-        search_linear = view.findViewById(R.id.search_linear);
-        search_image = view.findViewById(R.id.search_image);
-        search_edname = view.findViewById(R.id.search_edname);
-        home_text = view.findViewById(R.id.home_text);
-        home_dingwei = view.findViewById(R.id.home_dingwei);
-        mRecy.setLayoutManager(new LinearLayoutManager(getActivity()));
-        cinemaFlowAdapter = new CinemaFlowAdapter(getActivity());
-        initView();
-
-        home_dingwei.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                home_text.setText(locationDescribe);
-                Toast.makeText(getActivity(), "纬度"+latitude+"经度"+longitude, Toast.LENGTH_SHORT).show();
-                SPFUtil.getInstance().saveData("latitude",latitude+"");
-                SPFUtil.getInstance().saveData("longitude",longitude+"");
-            }
-        });
-
-
-    }
-
-    private void initView() {
+    protected void initData() {
         allBean = new AllBean();
         HotmoviePresenter hotmoviePresenter = new HotmoviePresenter(this);
         hotmoviePresenter.getKeyorNum(1 + "", 10 + "");
@@ -115,9 +82,6 @@ public class yingpianFragment extends Fragment implements HotmovieContart.IHotmo
         hotmoviePresenter.getKeyorNum3(1 + "", 10 + "");
         search_image.setOnClickListener(this);
         search_textName.setOnClickListener(this);
-
-
-
         mLocationClient = new LocationClient(getActivity().getApplicationContext());
         //声明LocationClient类
         mLocationClient.registerLocationListener(myListener);
@@ -135,10 +99,38 @@ public class yingpianFragment extends Fragment implements HotmovieContart.IHotmo
         option.setLocationNotify(true);
         mLocationClient.setLocOption(option);
         mLocationClient.start();
+    }
 
+    @Override
+    protected void initView(View view) {
+        unbinder = ButterKnife.bind(this, view);
+        mDianyingbg = view.findViewById(R.id.dianyingbg);
+        mRecy = view.findViewById(R.id.recy);
+        search_textName = view.findViewById(R.id.search_textName);
+        search_linear = view.findViewById(R.id.search_linear);
+        search_image = view.findViewById(R.id.search_image);
+        search_edname = view.findViewById(R.id.search_edname);
+        home_text = view.findViewById(R.id.home_text);
+        home_dingwei = view.findViewById(R.id.home_dingwei);
+        mRecy.setLayoutManager(new LinearLayoutManager(getActivity()));
+        cinemaFlowAdapter = new CinemaFlowAdapter(getActivity());
+        home_dingwei.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                home_text.setText(locationDescribe);
+                SPFUtil.getInstance().saveData("latitude",latitude+"");
+                SPFUtil.getInstance().saveData("longitude",longitude+"");
+            }
+        });
 
 
     }
+
+    @Override
+    protected int provideLayoutId() {
+        return R.layout.fragment_yingpian;
+    }
+
 
     public class MyLocationListener implements BDLocationListener {
 

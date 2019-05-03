@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".mvp.ui.activity.CinemainfoActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:background="@mipmap/dianyingbg">
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/cinema_logo"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:src="@mipmap/ic_launcher"
+            android:scaleType="fitXY"
+            android:layout_marginTop="13dp"
+            android:layout_marginLeft="24dp"/>
+        <TextView
+            android:id="@+id/cinema_name"
+            android:layout_width="match_parent"
+            android:layout_height="22dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginLeft="92dp"
+            android:textSize="16sp"
+            android:layout_marginRight="65dp"
+            android:textColor="#fff"
+            android:text="Text"/>
+        <TextView
+            android:id="@+id/cinema_title"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_marginLeft="92dp"
+            android:layout_marginRight="65dp"
+            android:text="Text"
+            android:textColor="#fff"
+            android:textSize="12sp"
+            android:layout_marginTop="35dp"/>
+        <ImageView
+            android:id="@+id/cinema_navigation"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="35dp"
+            android:src="@mipmap/com_icon_navigation_default"/>
+    </RelativeLayout>
+    <recycler.coverflow.RecyclerCoverFlow
+        android:id="@+id/cinema_coverflow"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="107dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"/>
+    <TextView
+        android:id="@+id/textlinear"
+        android:layout_below="@+id/cinema_coverflow"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="25dp"
+        android:background="#ccc"
+        android:layout_marginRight="25dp"
+        android:layout_height="3dp" />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/cinema_recy"
+        android:layout_below="@+id/textlinear"
+        android:layout_marginRight="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="24dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+
+</RelativeLayout>

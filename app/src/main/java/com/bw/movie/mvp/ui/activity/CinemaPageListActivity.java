@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -34,6 +35,8 @@ public class CinemaPageListActivity extends BaseActivity<CinemaPageListPresenter
     RadioGroup navigationBtn;
     @BindView(R.id.my_fragment_recy)
     RecyclerView myFragmentRecy;
+    @BindView(R.id.back)
+    ImageView back;
     private CinemapageListAdapter cinemapageListAdapter;
     private MoviePageListAdapter moviePageListAdapter;
 
@@ -77,7 +80,6 @@ public class CinemaPageListActivity extends BaseActivity<CinemaPageListPresenter
 
     @Override
     public void MoviePageListsuccess(MoviePageListBean result) {
-        Toast.makeText(this, "" + result.getResult().size(), Toast.LENGTH_SHORT).show();
         moviePageListAdapter.setList(result.getResult());
         myFragmentRecy.setAdapter(moviePageListAdapter);
     }
@@ -87,7 +89,7 @@ public class CinemaPageListActivity extends BaseActivity<CinemaPageListPresenter
 
     }
 
-    @OnClick({R.id.btn1, R.id.btn2})
+    @OnClick({R.id.btn1, R.id.btn2,R.id.back})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn1:
@@ -101,6 +103,8 @@ public class CinemaPageListActivity extends BaseActivity<CinemaPageListPresenter
                 btn2.setTextColor(Color.WHITE);
                 presenter.gettext("1","10");
                 break;
+            case R.id.back:
+                finish();
         }
     }
 }

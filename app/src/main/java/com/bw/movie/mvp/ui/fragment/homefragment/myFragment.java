@@ -3,8 +3,6 @@ package com.bw.movie.mvp.ui.fragment.homefragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bw.movie.R;
+import com.bw.movie.mvp.ui.activity.BuyTicketRecordListActivity;
 import com.bw.movie.mvp.ui.activity.CinemaPageListActivity;
 
 import butterknife.BindView;
@@ -54,7 +53,6 @@ public class myFragment extends Fragment {
     }
 
 
-
     @OnClick({R.id.my_fragment_image1, R.id.my_fragment_image2, R.id.my_fragment_image3, R.id.my_fragment_image4, R.id.my_fragment_image5, R.id.my_fragment_image6, R.id.my_fragment_remind, R.id.my_fargment_userqiandao})
     public void onViewClicked(View view) {
         switch (view.getId()) {
@@ -64,6 +62,7 @@ public class myFragment extends Fragment {
                 wodeguanzhu();
                 break;
             case R.id.my_fragment_image3:
+                goupiaojilu();
                 break;
             case R.id.my_fragment_image4:
                 break;
@@ -78,8 +77,13 @@ public class myFragment extends Fragment {
         }
     }
 
+    private void goupiaojilu() {
+        Intent intent = new Intent(getActivity(),BuyTicketRecordListActivity.class);
+        startActivity(intent);
+    }
+
     private void wodeguanzhu() {
-        Intent intent = new Intent(getActivity(),CinemaPageListActivity.class);
+        Intent intent = new Intent(getActivity(), CinemaPageListActivity.class);
         startActivity(intent);
     }
 

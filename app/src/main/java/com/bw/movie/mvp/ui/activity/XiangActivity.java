@@ -101,7 +101,6 @@ public class XiangActivity extends BaseActivity<XiangPresenter> implements Xiang
         y = point.y;
         Intent intent = getIntent();
         movieid = intent.getStringExtra("movieid");
-        Toast.makeText(this, "" + movieid, Toast.LENGTH_SHORT).show();
         presenter.getKeyorNum(movieid);
         presenter.getpingKeyorNum("1", "10", movieid);
     }
@@ -240,6 +239,7 @@ public class XiangActivity extends BaseActivity<XiangPresenter> implements Xiang
         });
         RecyclerView frag_recommend_3 = mView.findViewById(R.id.frag_recommend_4);
         ImageView white_pinglun = mView.findViewById(R.id.white_pinglun);
+        ImageView pinglun_back = mView.findViewById(R.id.pinglun_back);
 
         popupWindow = new PopupWindow(mView, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         popupWindow.setTouchable(true);
@@ -285,8 +285,13 @@ public class XiangActivity extends BaseActivity<XiangPresenter> implements Xiang
                             }
                         });
                 customizeDialog.show();
-//                evaluateAdapter.notifyDataSetChanged();
 
+            }
+        });
+        pinglun_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popupWindow.dismiss();
             }
         });
     }
@@ -359,6 +364,7 @@ public class XiangActivity extends BaseActivity<XiangPresenter> implements Xiang
         popupWindow.setOutsideTouchable(true);
         popupWindow.setFocusable(true);
         popupWindow.showAsDropDown(comIconMovieDefault);
+        popupWindow.setBackgroundDrawable(new BitmapDrawable(this.getResources(), (Bitmap) null));
         pop_detail_typetext.setText(getString(R.string.app_leixing) + result.getMovieTypes());
         pop_detail_minute.setText(getString(R.string.app_daoyan) + result.getDirector());
         pop_detail_place.setText(getString(R.string.app_shichang) + result.getDuration());

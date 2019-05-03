@@ -51,6 +51,7 @@ public class BannerAdapter extends RecyclerView.Adapter<BannerAdapter.Myvh> {
                 context.startActivity(intent);
             }
         });
+
     }
 
     @Override

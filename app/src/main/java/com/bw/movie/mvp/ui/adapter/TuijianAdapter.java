@@ -49,7 +49,6 @@ public class TuijianAdapter extends RecyclerView.Adapter<TuijianAdapter.Myvh> {
         Uri uri = Uri.parse(list.get(i).getLogo());
         myvh.mImageModel.setImageURI(uri);
         final int followCinema = list.get(i).getFollowCinema();
-        Log.e("followCinema",followCinema+"");
         if (followCinema==1){
             myvh.mXiangCheckbox.setChecked(true);
         }else{
@@ -65,6 +64,16 @@ public class TuijianAdapter extends RecyclerView.Adapter<TuijianAdapter.Myvh> {
                     myvh.mXiangCheckbox.setChecked(false);
                     onclicklisnter.click(list.get(i).getId()+"",2);
                 }
+            }
+        });
+
+        myvh.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onclicklisnter.itemclick(list.get(i).getId()+"",
+                        list.get(i).getLogo(),
+                        list.get(i).getName(),
+                        list.get(i).getAddress());
             }
         });
     }
@@ -99,6 +108,7 @@ public class TuijianAdapter extends RecyclerView.Adapter<TuijianAdapter.Myvh> {
 
     public interface onclicklisnter{
         void click(String cid,int bb);
+        void itemclick(String itemid,String imageurl,String cinemaname,String cinemaaddress);
     }
 
 }

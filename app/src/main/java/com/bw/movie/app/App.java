@@ -22,7 +22,6 @@ public class App extends Application {
         ImagePipelineConfig config = ImagePipelineConfig.newBuilder(this)
                 .setMainDiskCacheConfig(cacheConfig)
                 .build();
-
         Fresco.initialize(this,config);
     }
 }

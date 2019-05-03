@@ -56,7 +56,10 @@
         <activity android:name=".mvp.ui.activity.CinemasListByMovieIdActivity" />
         <activity android:name=".mvp.ui.activity.MovieScheduleListActivity" />
         <activity android:name=".mvp.ui.activity.XuanzuoActivity" />
-        <activity android:name=".mvp.ui.activity.CinemaPageListActivity"></activity>
+        <activity android:name=".mvp.ui.activity.CinemaPageListActivity" />
+        <activity android:name=".mvp.ui.activity.BuyTicketRecordListActivity" />
+        <activity android:name=".mvp.ui.activity.CinemainfoActivity"
+            android:launchMode="singleTask"></activity>
     </application>
 
 </manifest>

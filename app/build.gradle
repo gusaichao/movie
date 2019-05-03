@@ -94,6 +94,7 @@ dependencies {
     //微信登陆
     implementation 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
 
+    implementation(name: 'alipaySdk-15.6.2-20190416165100-noUtdid', ext: 'aar')
 
     implementation 'cn.jzvd:jiaozivideoplayer:6.2.4'
 }

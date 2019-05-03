@@ -39,6 +39,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginTop="@dimen/dp_10"
         />
-
+    <ImageView
+        android:id="@+id/back"
+        android:layout_width="@dimen/dp_60"
+        android:layout_height="@dimen/dp_60"
+        android:src="@mipmap/com_icon_back_default"
+        android:layout_marginBottom="@dimen/dp_20"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="@dimen/dp_24"
+        />
 
 </android.support.constraint.ConstraintLayout>

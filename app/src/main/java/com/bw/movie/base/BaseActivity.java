@@ -33,4 +33,9 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
 
     protected abstract int providerLayoutId();
 
+    @Override
+    protected void onDestroy() {
+        presenter.onDestroy();
+        super.onDestroy();
+    }
 }

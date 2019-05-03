@@ -142,8 +142,6 @@ public class LoginActivity extends AppCompatActivity implements IloginContart.IL
         String edphone = edPhone.getText().toString().trim();
         String edpwd = edPwd.getText().toString();
         String encrypt = EncryptUtil.encrypt(edpwd);
-        Log.e("edphone", edphone);
-        Log.e("edphone", encrypt);
         HashMap<String, String> params = new HashMap<>();
         params.put("phone", edphone);
         params.put("pwd", encrypt);

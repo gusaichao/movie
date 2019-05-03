@@ -4,6 +4,9 @@ package com.bw.movie.mvp.presneter;
 
 import com.bw.movie.base.BasePresenter;
 import com.bw.movie.bean.BaseBean;
+import com.bw.movie.bean.CinemaInfoBean;
+import com.bw.movie.bean.HotmovieBean;
+import com.bw.movie.bean.MovieScheduleListBean;
 import com.bw.movie.bean.TuijianBean;
 import com.bw.movie.mvp.contart.TuijianContart;
 import com.bw.movie.mvp.model.TuijianModel;
@@ -14,6 +17,7 @@ import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
 public class TuijianPresenter extends BasePresenter<TuijianContart.ICircleView> implements TuijianContart.ICirclepresenter {
@@ -36,6 +40,15 @@ public class TuijianPresenter extends BasePresenter<TuijianContart.ICircleView> 
     }
     public void getquxiaocidKeyorNum(HashMap<String,String> map,String cinemaId){
         circleModel.getquxiaoModel(map,cinemaId);
+    }
+    public void getCinemaInfocidKeyorNum(String cinemaId){
+        circleModel.geCinemaInfoModel(cinemaId);
+    }
+    public void getbannKeyorNum(String page,String count){
+        circleModel.getHotmovieModel(page, count);
+    }
+    public void getMovieScheduleList(String movieId,String cinemasId){
+        circleModel.getMovieScheduleListModel(movieId,cinemasId);
     }
     @Override
     public void getCirclePresenter(Observable<TuijianBean> Circlebean) {
@@ -123,4 +136,71 @@ public class TuijianPresenter extends BasePresenter<TuijianContart.ICircleView> 
                     }
                 });
     }
+
+    @Override
+    public void getCinemaInfoPresenter(Observable<CinemaInfoBean> cinemaInfoBean) {
+        cinemaInfoBean.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<CinemaInfoBean>() {
+                    @Override
+                    public void accept(CinemaInfoBean cinemaInfoBean) throws Exception {
+                        view.CinemaInfosuccess(cinemaInfoBean);
+                    }
+                });
+    }
+    @Override
+    public void getHotmoviePresenter(Observable<HotmovieBean> Hotmoviebean) {
+        Hotmoviebean.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<HotmovieBean>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(HotmovieBean HotmovieBean) {
+                        if (HotmovieBean != null) {
+                            view.bannsuccess(HotmovieBean);
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        view.bannfaild(e);
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+    @Override
+    public void getMovieScheduleListPresenter(Observable<MovieScheduleListBean> cinemasListByMovieIdbean) {
+        cinemasListByMovieIdbean.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<MovieScheduleListBean>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(MovieScheduleListBean cinemasListByMovieIdBean) {
+                        view.MovieScheduleListsuccess(cinemasListByMovieIdBean);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        view.MovieScheduleListfaild(e);
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
 }

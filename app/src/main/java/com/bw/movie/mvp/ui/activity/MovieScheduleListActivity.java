@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bw.movie.R;
@@ -19,9 +20,10 @@ import com.jaeger.library.StatusBarUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class MovieScheduleListActivity extends BaseActivity<MovieScheduleListPresenter>
-        implements MovieScheduleListContart.IMovieScheduleListView,SchedulelistAdapter.setScheduleOnclicklisenter {
+        implements MovieScheduleListContart.IMovieScheduleListView, SchedulelistAdapter.setScheduleOnclicklisenter {
 
 
     @BindView(R.id.schedule_yingyuan_name)
@@ -42,6 +44,8 @@ public class MovieScheduleListActivity extends BaseActivity<MovieScheduleListPre
     TextView scheduleDianyingPlace;
     @BindView(R.id.schedule_recy)
     RecyclerView scheduleRecy;
+    @BindView(R.id.back)
+    ImageView back;
     private SchedulelistAdapter schedulelistAdapter;
     private String cinemasname;
     private String cinemasaddress;
@@ -85,10 +89,10 @@ public class MovieScheduleListActivity extends BaseActivity<MovieScheduleListPre
     public void success(XiangBean resultBean) {
         name = resultBean.getResult().getName();
         scheduleDianyingName.setText(resultBean.getResult().getName());
-        scheduleDianyingTypetext.setText(getString(R.string.app_leixing)+resultBean.getResult().getMovieTypes());
-        scheduleDianyingDirector.setText(getString(R.string.app_daoyan)+resultBean.getResult().getDirector());
-        scheduleDianyingMinute.setText(getString(R.string.app_shichang)+resultBean.getResult().getDuration());
-        scheduleDianyingPlace.setText(getString(R.string.app_chandi)+resultBean.getResult().getPlaceOrigin());
+        scheduleDianyingTypetext.setText(getString(R.string.app_leixing) + resultBean.getResult().getMovieTypes());
+        scheduleDianyingDirector.setText(getString(R.string.app_daoyan) + resultBean.getResult().getDirector());
+        scheduleDianyingMinute.setText(getString(R.string.app_shichang) + resultBean.getResult().getDuration());
+        scheduleDianyingPlace.setText(getString(R.string.app_chandi) + resultBean.getResult().getPlaceOrigin());
         Uri uri = Uri.parse(resultBean.getResult().getImageUrl());
         scheduleDianyingImage.setImageURI(uri);
 
@@ -111,14 +115,20 @@ public class MovieScheduleListActivity extends BaseActivity<MovieScheduleListPre
     }
 
     @Override
-    public void click(String time, String ScreeningHall,double price) {
-        Intent intent = new Intent(this,XuanzuoActivity.class);
-        intent.putExtra("time",time);
-        intent.putExtra("ScreeningHall",ScreeningHall);
-        intent.putExtra("cinemasname",cinemasname);
-        intent.putExtra("cinemasaddress",cinemasaddress);
-        intent.putExtra("name",name);
-        intent.putExtra("price",price);
+    public void click(String time, String ScreeningHall, double price, String id) {
+        Intent intent = new Intent(this, XuanzuoActivity.class);
+        intent.putExtra("time", time);
+        intent.putExtra("ScreeningHall", ScreeningHall);
+        intent.putExtra("cinemasname", cinemasname);
+        intent.putExtra("cinemasaddress", cinemasaddress);
+        intent.putExtra("name", name);
+        intent.putExtra("price", price);
+        intent.putExtra("id", id);
         startActivity(intent);
+    }
+
+    @OnClick(R.id.back)
+    public void onViewClicked() {
+        finish();
     }
 }

@@ -258,4 +258,6 @@
         app:layout_constraintLeft_toLeftOf="@id/my_fargment_userimage"
         app:layout_constraintRight_toRightOf="@id/my_fargment_userimage"
         />
+    
+
 </android.support.constraint.ConstraintLayout>

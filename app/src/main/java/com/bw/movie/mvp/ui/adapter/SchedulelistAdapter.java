@@ -42,7 +42,6 @@ public class SchedulelistAdapter extends RecyclerView.Adapter<SchedulelistAdapte
 
     @Override
     public void onBindViewHolder(@NonNull MyVH holder, final int position) {
-        Toast.makeText(context, "" + list.get(position).getBeginTime(), Toast.LENGTH_SHORT).show();
         holder.mScheduleItemBeginTime.setText(list.get(position).getBeginTime());
         holder.mScheduleItemScreeningHall.setText(list.get(position).getScreeningHall());
         holder.mScheduleItemPrice.setText(list.get(position).getPrice() + "");
@@ -50,7 +49,11 @@ public class SchedulelistAdapter extends RecyclerView.Adapter<SchedulelistAdapte
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setScheduleOnclicklisenter.click(list.get(position).getBeginTime()+"--"+list.get(position).getEndTime(),list.get(position).getScreeningHall(),list.get(position).getPrice());
+                setScheduleOnclicklisenter.click(list.get(position).getBeginTime()
+                                +"--"+list.get(position).getEndTime(),
+                                list.get(position).getScreeningHall(),
+                                list.get(position).getPrice(),
+                            list.get(position).getId()+"");
             }
         });
     }
@@ -81,7 +84,7 @@ public class SchedulelistAdapter extends RecyclerView.Adapter<SchedulelistAdapte
     }
 
     public interface setScheduleOnclicklisenter{
-        void click(String time,String ScreeningHall,double price);
+        void click(String time,String ScreeningHall,double price,String id);
     }
 
 }

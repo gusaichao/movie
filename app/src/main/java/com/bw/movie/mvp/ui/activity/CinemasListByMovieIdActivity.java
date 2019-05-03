@@ -4,8 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bw.movie.R;
 import com.bw.movie.base.BaseActivity;
@@ -20,15 +20,18 @@ import com.jaeger.library.StatusBarUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class CinemasListByMovieIdActivity extends BaseActivity<XiangPresenter>
-        implements XiangContart.IXiangtopView ,CinemaslistAdapter.onclicklisnter{
+        implements XiangContart.IXiangtopView, CinemaslistAdapter.onclicklisnter {
 
 
     @BindView(R.id.cinemaslistbymovieid_recy)
     RecyclerView cinemaslistbymovieidRecy;
     @BindView(R.id.cinemaslistbymovieid_name)
     TextView cinemaslistbymovieidName;
+    @BindView(R.id.back)
+    ImageView back;
     private CinemaslistAdapter cinemaslistAdapter;
     private StatusBarUtil statusBarUtil;
     private String movieid;
@@ -51,7 +54,6 @@ public class CinemasListByMovieIdActivity extends BaseActivity<XiangPresenter>
         movieid = intent.getStringExtra("movieid");
         String moviename = intent.getStringExtra("moviename");
         cinemaslistbymovieidName.setText(moviename);
-        Toast.makeText(this, "" + movieid, Toast.LENGTH_SHORT).show();
         cinemaslistAdapter = new CinemaslistAdapter(this);
         cinemaslistAdapter.setOnclicklisnter(this);
         cinemaslistbymovieidRecy.setLayoutManager(new LinearLayoutManager(this));
@@ -64,15 +66,14 @@ public class CinemasListByMovieIdActivity extends BaseActivity<XiangPresenter>
     }
 
     @Override
-    public void clickitem(String cid,String name,String address) {
-        Intent intent = new Intent(this,MovieScheduleListActivity.class);
-        intent.putExtra("movieid",movieid);
-        intent.putExtra("cinemasId",cid);
-        intent.putExtra("cinemasname",name);
-        intent.putExtra("cinemasaddress",address);
+    public void clickitem(String cid, String name, String address) {
+        Intent intent = new Intent(this, MovieScheduleListActivity.class);
+        intent.putExtra("movieid", movieid);
+        intent.putExtra("cinemasId", cid);
+        intent.putExtra("cinemasname", name);
+        intent.putExtra("cinemasaddress", address);
         startActivity(intent);
     }
-
 
 
     @Override
@@ -142,5 +143,8 @@ public class CinemasListByMovieIdActivity extends BaseActivity<XiangPresenter>
 
     }
 
-
+    @OnClick(R.id.back)
+    public void onViewClicked() {
+        finish();
+    }
 }

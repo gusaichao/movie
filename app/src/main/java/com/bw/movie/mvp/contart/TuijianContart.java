@@ -6,6 +6,7 @@ import com.bw.movie.base.IBaseView;
 import com.bw.movie.bean.BaseBean;
 import com.bw.movie.bean.CinemaInfoBean;
 import com.bw.movie.bean.HotmovieBean;
+import com.bw.movie.bean.MovieListByCinemaIdBean;
 import com.bw.movie.bean.MovieScheduleListBean;
 import com.bw.movie.bean.TuijianBean;
 
@@ -20,7 +21,7 @@ public interface TuijianContart {
         void getguanzhuPresenter(Observable<BaseBean> guanzhubean);
         void getquxiaoPresenter(Observable<BaseBean> quxiaobean);
         void getCinemaInfoPresenter(Observable<CinemaInfoBean> cinemaInfoBean);
-        void getHotmoviePresenter(Observable<HotmovieBean> Hotmoviebean);
+        void getHotmoviePresenter(Observable<MovieListByCinemaIdBean> movieListByCinemaIdBean);
         void getMovieScheduleListPresenter(Observable<MovieScheduleListBean> movieScheduleListBean);
     }
 
@@ -29,7 +30,7 @@ public interface TuijianContart {
         void getguanzhuModel(HashMap<String,String> map, String cinemaId);
         void getquxiaoModel(HashMap<String,String> map,String cinemaId);
         void geCinemaInfoModel(String cinemaId);
-        void getHotmovieModel(String key, String num);
+        void getHotmovieModel(String cinemaId);
         void getMovieScheduleListModel(String movieId,String cinemasId);
     }
 
@@ -42,7 +43,7 @@ public interface TuijianContart {
         void quxiaofaild(Throwable t);
         void CinemaInfosuccess(CinemaInfoBean result);
         void CinemaInfofaild(Throwable t);
-        void bannsuccess(HotmovieBean result);
+        void bannsuccess(MovieListByCinemaIdBean result);
         void bannfaild(Throwable t);
         void MovieScheduleListsuccess(MovieScheduleListBean result);
         void MovieScheduleListfaild(Throwable t);

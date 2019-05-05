@@ -14,10 +14,12 @@ import com.bw.movie.base.BaseActivity;
 import com.bw.movie.bean.BaseBean;
 import com.bw.movie.bean.CinemaInfoBean;
 import com.bw.movie.bean.HotmovieBean;
+import com.bw.movie.bean.MovieListByCinemaIdBean;
 import com.bw.movie.bean.MovieScheduleListBean;
 import com.bw.movie.bean.TuijianBean;
 import com.bw.movie.mvp.contart.TuijianContart;
 import com.bw.movie.mvp.presneter.TuijianPresenter;
+import com.bw.movie.mvp.ui.adapter.MovieListByCinemaIdAdapter;
 import com.bw.movie.mvp.ui.adapter.SchedulelistAdapter;
 import com.bw.movie.mvp.ui.adapter.homeitem.BannerAdapter;
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -48,7 +50,7 @@ public class CinemainfoActivity extends BaseActivity<TuijianPresenter>
     TextView textlinear;
     @BindView(R.id.cinema_recy)
     RecyclerView cinemaRecy;
-    private List<HotmovieBean.ResultBean> bannerslist;
+    private List<MovieListByCinemaIdBean.ResultBean> bannerslist;
     private String cinemasId;
     private SchedulelistAdapter schedulelistAdapter;
     private String imageurl;
@@ -58,7 +60,7 @@ public class CinemainfoActivity extends BaseActivity<TuijianPresenter>
 
     @Override
     protected void initData() {
-        presenter.getbannKeyorNum("1","10");
+        presenter.getbannKeyorNum(cinemasId);
         presenter.getCinemaInfocidKeyorNum(cinemasId);
         schedulelistAdapter = new SchedulelistAdapter(this);
         schedulelistAdapter.setSetScheduleOnclicklisenter(this);
@@ -110,9 +112,9 @@ public class CinemainfoActivity extends BaseActivity<TuijianPresenter>
     }
 
     @Override
-    public void bannsuccess(HotmovieBean result) {
+    public void bannsuccess(MovieListByCinemaIdBean result) {
         bannerslist = result.getResult();
-        BannerAdapter bannerAdapter = new BannerAdapter(this, bannerslist);
+        MovieListByCinemaIdAdapter bannerAdapter = new MovieListByCinemaIdAdapter(this, bannerslist);
         cinemaCoverflow.setAdapter(bannerAdapter);
         presenter.getMovieScheduleList(bannerslist.get(0).getId()+"",cinemasId+"");
     }

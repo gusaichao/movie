@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".mvp.ui.activity.RecordFeedBackActivity">
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:text="意见反馈"
+        android:textColor="#333333"
+        android:textSize="14sp" />
+    <RelativeLayout
+        android:id="@+id/fankui"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/dui"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/fankui"
+            android:layout_marginTop="120dp"
+            android:layout_centerHorizontal="true"/>
+        <TextView
+            android:layout_below="@+id/dui"
+            android:layout_marginTop="30dp"
+            android:layout_width="wrap_content"
+            android:text="反馈成功"
+            android:textColor="#333333"
+            android:layout_centerHorizontal="true"
+            android:textSize="16sp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_below="@+id/dui"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="70dp"
+            android:layout_centerHorizontal="true"
+            android:textColor="#666666"
+            android:gravity="center"
+            android:text="感谢您对维度影院的关注与支持,我们会认真的处理您的反馈,尽快完善和修复相关功能"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <EditText
+        android:id="@+id/user_advice"
+        android:layout_below="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:gravity="center"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/my_wodexinxi_bg"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:textColor="#999"
+        android:textSize="12sp"
+        android:hint="Text"/>
+    <TextView
+        android:id="@+id/user_submission"
+        android:layout_below="@+id/user_advice"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="24dp"
+        android:layout_marginTop="20dp"
+        android:layout_width="48dp"
+        android:layout_height="25dp"
+        android:gravity="center"
+        android:background="#f00"
+        android:text="提交"/>
+    <ImageView
+        android:id="@+id/advice_return"
+        android:layout_width="60dp"
+        android:src="@mipmap/com_icon_back_default"
+        android:layout_marginLeft="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/dp_20"
+        android:layout_height="60dp" />
+
+</RelativeLayout>

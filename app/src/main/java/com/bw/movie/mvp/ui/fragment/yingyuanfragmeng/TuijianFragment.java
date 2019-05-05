@@ -17,6 +17,7 @@ import com.bw.movie.R;
 import com.bw.movie.bean.BaseBean;
 import com.bw.movie.bean.CinemaInfoBean;
 import com.bw.movie.bean.HotmovieBean;
+import com.bw.movie.bean.MovieListByCinemaIdBean;
 import com.bw.movie.bean.MovieScheduleListBean;
 import com.bw.movie.bean.TuijianBean;
 import com.bw.movie.mvp.contart.TuijianContart;
@@ -127,7 +128,7 @@ public class TuijianFragment extends Fragment implements TuijianContart.ICircleV
     }
 
     @Override
-    public void bannsuccess(HotmovieBean result) {
+    public void bannsuccess(MovieListByCinemaIdBean result) {
 
     }
 

@@ -65,6 +65,7 @@ public class LoginActivity extends AppCompatActivity implements IloginContart.IL
     }
 
     private void initView() {
+
         loginPresenter = new LoginPresenter(this);
         sp = getSharedPreferences("Login", MODE_PRIVATE);
         if (sp.getBoolean("ischeck", false)) {
@@ -73,6 +74,12 @@ public class LoginActivity extends AppCompatActivity implements IloginContart.IL
             String pwd = sp.getString("pwd", "");
             edPhone.setText(phone);
             edPwd.setText(pwd);
+        }
+        Intent intent = getIntent();
+        String message = intent.getStringExtra("message");
+        if (message!=null){
+            Toast.makeText(this, ""+message, Toast.LENGTH_SHORT).show();
+            edPwd.setText("");
         }
     }
 

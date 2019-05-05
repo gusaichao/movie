@@ -58,8 +58,14 @@
         <activity android:name=".mvp.ui.activity.XuanzuoActivity" />
         <activity android:name=".mvp.ui.activity.CinemaPageListActivity" />
         <activity android:name=".mvp.ui.activity.BuyTicketRecordListActivity" />
-        <activity android:name=".mvp.ui.activity.CinemainfoActivity"
-            android:launchMode="singleTask"></activity>
+        <activity
+            android:name=".mvp.ui.activity.CinemainfoActivity"
+            android:launchMode="singleTask" />
+        <activity android:name=".mvp.ui.activity.UserInfoByUserIdActivity" />
+        <activity android:name=".mvp.ui.activity.UpdatePasswordActivity" />
+        <activity android:name=".mvp.ui.activity.RecordFeedBackActivity" />
+        <activity android:name=".mvp.ui.activity.AllSysMsgListActivity" />
+        <activity android:name=".mvp.ui.activity.VersionActivity"></activity>
     </application>
 
 </manifest>

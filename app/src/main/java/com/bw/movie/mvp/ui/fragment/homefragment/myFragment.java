@@ -11,8 +11,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bw.movie.R;
+import com.bw.movie.mvp.ui.activity.AllSysMsgListActivity;
 import com.bw.movie.mvp.ui.activity.BuyTicketRecordListActivity;
 import com.bw.movie.mvp.ui.activity.CinemaPageListActivity;
+import com.bw.movie.mvp.ui.activity.RecordFeedBackActivity;
+import com.bw.movie.mvp.ui.activity.UserInfoByUserIdActivity;
+import com.bw.movie.mvp.ui.activity.VersionActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -57,6 +61,7 @@ public class myFragment extends Fragment {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.my_fragment_image1:
+                wodexinxi();
                 break;
             case R.id.my_fragment_image2:
                 wodeguanzhu();
@@ -65,16 +70,39 @@ public class myFragment extends Fragment {
                 goupiaojilu();
                 break;
             case R.id.my_fragment_image4:
+                yijianfankui();
                 break;
             case R.id.my_fragment_image5:
+                zuixinbanben();
                 break;
             case R.id.my_fragment_image6:
                 break;
             case R.id.my_fragment_remind:
+                xitongtongzhi();
                 break;
             case R.id.my_fargment_userqiandao:
                 break;
         }
+    }
+
+    private void zuixinbanben() {
+        Intent intent = new Intent(getActivity(),VersionActivity.class);
+        startActivity(intent);
+    }
+
+    private void xitongtongzhi() {
+        Intent intent = new Intent(getActivity(),AllSysMsgListActivity.class);
+        startActivity(intent);
+    }
+
+    private void yijianfankui() {
+        Intent intent = new Intent(getActivity(),RecordFeedBackActivity.class);
+        startActivity(intent);
+    }
+
+    private void wodexinxi() {
+        Intent intent = new Intent(getActivity(),UserInfoByUserIdActivity.class);
+        startActivity(intent);
     }
 
     private void goupiaojilu() {

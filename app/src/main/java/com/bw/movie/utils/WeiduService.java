@@ -7,17 +7,22 @@ import com.bw.movie.bean.CinemaInfoBean;
 import com.bw.movie.bean.CinemaPageListBean;
 import com.bw.movie.bean.CinemasListByMovieIdBean;
 import com.bw.movie.bean.ComingBean;
+import com.bw.movie.bean.FindAllSysMsgListBean;
 import com.bw.movie.bean.FujinBean;
 import com.bw.movie.bean.HotmovieBean;
 import com.bw.movie.bean.LoginBean;
+import com.bw.movie.bean.ModifyUserInfoBean;
+import com.bw.movie.bean.MovieListByCinemaIdBean;
 import com.bw.movie.bean.MoviePageListBean;
 import com.bw.movie.bean.MovieScheduleListBean;
 import com.bw.movie.bean.MovieTicket;
+import com.bw.movie.bean.NewVersionBean;
 import com.bw.movie.bean.NowshowBean;
 import com.bw.movie.bean.PayBean;
 import com.bw.movie.bean.PingBean;
 import com.bw.movie.bean.RegisterBean;
 import com.bw.movie.bean.TuijianBean;
+import com.bw.movie.bean.UserInfoByUserIdBean;
 import com.bw.movie.bean.XiangBean;
 
 import java.util.HashMap;
@@ -26,6 +31,7 @@ import io.reactivex.Observable;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.HeaderMap;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
@@ -109,7 +115,32 @@ public interface WeiduService {
     //查询电影信息明细
     @GET("cinema/v1/findCinemaInfo")
     Observable<CinemaInfoBean> cinemainfoData(@Query("cinemaId")String cinemaId);
+    //根据影院ID查询该影院当前排期的电影列表
+    @GET("movie/v1/findMovieListByCinemaId")
+    Observable<MovieListByCinemaIdBean> MovieListByCinemaIdData(@Query("cinemaId")String cinemaId);
 
+    //查询用户信息
+    @GET("user/v1/verify/getUserInfoByUserId")
+    Observable<UserInfoByUserIdBean> UserInfoByUserIdData();
+    //修改用户信息
+    @FormUrlEncoded
+    @POST("user/v1/verify/modifyUserInfo")
+    Observable<ModifyUserInfoBean> modifyUserInfoData(@FieldMap HashMap<String,String> map);
 
+    //修改密码
+    @FormUrlEncoded
+    @POST("user/v1/verify/modifyUserPwd")
+    Observable<BaseBean> modifyUserPwdData(@FieldMap HashMap<String,String> map);
 
+    //意见反馈
+    @FormUrlEncoded
+    @POST("tool/v1/verify/recordFeedBack")
+    Observable<BaseBean> recordFeedBackData(@FieldMap HashMap<String,String> map);
+
+    //查询系统消息列表
+    @GET("tool/v1/verify/findAllSysMsgList")
+    Observable<FindAllSysMsgListBean> findAllSysMsgListData(@Query("page")String page,@Query("count")String count);
+    //查询新版本
+    @GET("tool/v1/findNewVersion")
+    Observable<NewVersionBean> NewVersionData(@Header("ak")String ak);
 }

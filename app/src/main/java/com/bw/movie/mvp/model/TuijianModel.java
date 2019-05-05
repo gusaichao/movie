@@ -5,6 +5,7 @@ package com.bw.movie.mvp.model;
 import com.bw.movie.bean.BaseBean;
 import com.bw.movie.bean.CinemaInfoBean;
 import com.bw.movie.bean.HotmovieBean;
+import com.bw.movie.bean.MovieListByCinemaIdBean;
 import com.bw.movie.bean.MovieScheduleListBean;
 import com.bw.movie.bean.TuijianBean;
 import com.bw.movie.mvp.contart.TuijianContart;
@@ -47,8 +48,8 @@ public class TuijianModel implements TuijianContart.ICirclemodel {
         circlePresenter.getCinemaInfoPresenter(cinemainfoData);
     }
     @Override
-    public void getHotmovieModel(String page, String count) {
-        Observable<HotmovieBean> HotmovieData = RetrofitUtils.getInstance().getservice().hotmovieData(page, count);
+    public void getHotmovieModel(String cinemaId) {
+        Observable<MovieListByCinemaIdBean> HotmovieData = RetrofitUtils.getInstance().getservice().MovieListByCinemaIdData(cinemaId);
         circlePresenter.getHotmoviePresenter(HotmovieData);
     }
     @Override

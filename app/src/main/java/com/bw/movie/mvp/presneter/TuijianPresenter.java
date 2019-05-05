@@ -6,6 +6,7 @@ import com.bw.movie.base.BasePresenter;
 import com.bw.movie.bean.BaseBean;
 import com.bw.movie.bean.CinemaInfoBean;
 import com.bw.movie.bean.HotmovieBean;
+import com.bw.movie.bean.MovieListByCinemaIdBean;
 import com.bw.movie.bean.MovieScheduleListBean;
 import com.bw.movie.bean.TuijianBean;
 import com.bw.movie.mvp.contart.TuijianContart;
@@ -44,8 +45,8 @@ public class TuijianPresenter extends BasePresenter<TuijianContart.ICircleView> 
     public void getCinemaInfocidKeyorNum(String cinemaId){
         circleModel.geCinemaInfoModel(cinemaId);
     }
-    public void getbannKeyorNum(String page,String count){
-        circleModel.getHotmovieModel(page, count);
+    public void getbannKeyorNum(String cinemaId){
+        circleModel.getHotmovieModel(cinemaId);
     }
     public void getMovieScheduleList(String movieId,String cinemasId){
         circleModel.getMovieScheduleListModel(movieId,cinemasId);
@@ -149,17 +150,17 @@ public class TuijianPresenter extends BasePresenter<TuijianContart.ICircleView> 
                 });
     }
     @Override
-    public void getHotmoviePresenter(Observable<HotmovieBean> Hotmoviebean) {
+    public void getHotmoviePresenter(Observable<MovieListByCinemaIdBean> Hotmoviebean) {
         Hotmoviebean.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<HotmovieBean>() {
+                .subscribe(new Observer<MovieListByCinemaIdBean>() {
                     @Override
                     public void onSubscribe(Disposable d) {
 
                     }
 
                     @Override
-                    public void onNext(HotmovieBean HotmovieBean) {
+                    public void onNext(MovieListByCinemaIdBean HotmovieBean) {
                         if (HotmovieBean != null) {
                             view.bannsuccess(HotmovieBean);
                         }
